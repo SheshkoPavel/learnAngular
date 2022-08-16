@@ -5,8 +5,11 @@
     <!-- <app-product   [product]="products[0]"   ></app-product>
     <app-product   [product]="products[1]"  ></app-product> -->
 
+    <p *ngIf="loading" 
+    class="text-center text-lg text-red-400">Loading products from server...</p>
+
     <app-product 
-    *ngFor="let product of products; let i = index" 
+    *ngFor="let product of products$ | async; let i = index" 
     [product]="product" 
     >
     </app-product>

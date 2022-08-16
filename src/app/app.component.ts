@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from './models/product';
 import {products as data} from './data/products'
 import { ProductService } from './services/products.service';
+import { delay, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,20 @@ import { ProductService } from './services/products.service';
 export class AppComponent implements OnInit {
   
   title = 'first angular app'
-  products: IProduct[] = []
+ // products: IProduct[] = []
+  loading = false
+  products$: Observable<IProduct[]>
 
   constructor(private productsServices: ProductService){}
 
   ngOnInit(): void {
-    this.productsServices.getAll().subscribe((products)=> {
-      this.products = products
-      
-    })
+    this.loading = true
+    this.products$ = this.productsServices.getAll().pipe(
+      tap(() => {this.loading = false} )  //Add functionality to do smth after request
+      )
+    // this.productsServices.getAll().subscribe((products)=> {                      request without streams
+    //   this.products = products
+    //   this.loading = false
+    // })
   }
 }
