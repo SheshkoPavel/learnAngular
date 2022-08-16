@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
  // products: IProduct[] = []
   loading = false
   products$: Observable<IProduct[]>
+  filterRequest: ""
 
   constructor(private productsServices: ProductService){}
 
