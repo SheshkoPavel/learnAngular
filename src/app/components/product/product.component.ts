@@ -9,5 +9,5 @@ import { IProduct } from 'src/app/models/product'
 export class ProductComponent {
     @Input() product: IProduct
 
-    details = false
+    details = false  //passing data to angular component
 }
