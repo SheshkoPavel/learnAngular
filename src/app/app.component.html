@@ -19,11 +19,14 @@
     class="text-center text-lg text-red-400">Loading products from server...</p>
 
 
+    <div *ngIf="products$ | async as products">
+        <app-product 
+        *ngFor="let product of products | filterProducts:filterRequest; let i = index" 
+        [product]="product" 
+        >
+        </app-product>
+    </div>
 
-    <app-product 
-    *ngFor="let product of products$ | async; let i = index" 
-    [product]="product" 
-    >
-    </app-product>
+
 
 </div>
