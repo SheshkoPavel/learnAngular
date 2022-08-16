@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
-import { catchError, delay, Observable, throwError } from "rxjs";
+import { catchError, delay, Observable, retry, throwError } from "rxjs";
 import { IProduct } from "../models/product";
 import { ErrorService } from "./error.service";
 
@@ -25,8 +25,9 @@ export class ProductService{
                 }
             })
         }).pipe(
-            // delay(2000) искусственная задержка стрима (вывода массива)
-            catchError(this.errorHandler)
+            // delay(2000), искусственная задержка стрима (вывода массива)
+            retry(2),
+            catchError(this.errorHandler.bind(this))
         )
     }
 
