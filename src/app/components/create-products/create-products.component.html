@@ -1,1 +1,16 @@
-<p>create-products works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+
+    <input type="text" class="border w-full py-2 px-4 mb-2" placeholder="Product name"
+        formControlName="title"
+    >
+
+    <p class="text-red-500 font-medium mb-2"
+        *ngIf="title.errors?.minlength && title.touched"
+    >
+        Min length must be more 6 symbols. Now {{title.value.length}}
+    </p>
+
+    <button class="py-2 px-4 bg-blue-500 text-white" type="submit">Send</button>
+
+</form>
