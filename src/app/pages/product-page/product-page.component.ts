@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/products.service';
 })
 export class ProductPageComponent implements OnInit {
 
-  
+
   title = 'first angular app'
  // products: IProduct[] = []
   loading = false

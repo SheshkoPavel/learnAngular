@@ -6,21 +6,20 @@
     </div>
     <p>Price: <span class="font-bold">{{product.price | currency:'BYN ' }}</span> </p>
 
-    <button class="border py-2 px-4 rounded" 
+    <button class="border py-2 px-4 rounded"
     (click)="details = !details"
     [ngClass]="{
          'bg-yellow-200' : !details,
          ' bg-blue-200' : details
     }"
-    > 
+    >
     <!-- using passed data in component -->
-    {{details ? 'Hide' : 'Show more'}} 
+    {{details ? 'Hide' : 'Show more'}}
 </button>
 
     <div *ngIf="details">
         <p> {{product.description}} </p>
         <p> Rate is: <span [ngStyle]="{fontWeight: 'bold'}" >{{product.rating.rate | number: '1.2-4' }}</span>  </p>
     </div>
- 
 
 </div>

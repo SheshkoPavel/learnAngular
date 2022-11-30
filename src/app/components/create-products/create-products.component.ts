@@ -23,17 +23,15 @@ export class CreateProductsComponent implements OnInit {
   })
 
   get title(){
-    return this.form.controls.title as FormControl  
+    return this.form.controls.title as FormControl
   }
-
-
 
   ngOnInit(): void {
   }
 
   submit(){
 
-    this.productService.create(                
+    this.productService.create(
       {
         title: this.form.value.title as string,
         price: 13.5,
@@ -44,7 +42,7 @@ export class CreateProductsComponent implements OnInit {
           rate: 44,
           count: 5
         }
-    } 
+    }
   ).subscribe( () => {
     this.modalService.close()
 
